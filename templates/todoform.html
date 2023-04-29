@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>To-Do List</title>
+    <style type="text/css">
+        body {
+            font-size: 16px;
+            margin-top: 10px;
+            font-family: Arial, sans-serif;
+            text-decoration: none;
+            padding: 10px 0;
+        }
+        form {
+            font-size: 16px;
+            margin-top: 20px;
+            font-family: Arial, sans-serif;
+            text-decoration: none;
+            padding: 15px 0;
+        }
+        table {
+            font-size: 16px;
+            max-width: 400px;
+            margin-top: 20px;
+            font-family: Arial, sans-serif;
+            text-decoration: none;
+            padding: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>To-Do List:</h1>
+    <form action="/submit" method="post">
+        Task : <br>
+        <input type="text" name="task"><br>
+        
+        E-Mail : <br>
+        <input type="text" name="email"><br><br>
+        
+        Task Priority : <br>
+        <select name="priority">
+            <option value="low">Low</option>
+            <option value="medium">Medium</option>
+            <option value="high">High</option>
+        </select><br><br>
+        
+        <input type="submit" value="Add Task">
+    </form>
+
+    <table border="1" style="width:100%">
+        <thead>
+            <tr>
+                <td>Task</td>
+                <td>Email</td>
+                <td>Priority</td>
+            </tr>
+        </thead>
+        <tbody>
+            {% for task in tasks %}
+                <tr>
+                    <td>{{ task.task }}</td>
+                    <td>{{ task.email }}</td>
+                    <td>{{ task.priority }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <form action="/clear" method="post">
+    <input type="submit" value="Clear">
+    </form>
+
+</body>
+</html>
